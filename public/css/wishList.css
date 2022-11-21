@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+#wish_list_title{
+    font-family: 'Fjalla One', sans-serif;
+}
+.product_img{
+    border-radius: 10%;
+}
+.add_to_bag_buttton{
+    background-color: #c6a1a9; 
+    height:fit-content;   
+}
+.delete_icon_button{
+    background-color: transparent;
+    border: none;
+    width: fit-content;
+    height: fit-content;
+ }
+.link_product{
+    width: fit-content !important;
+    display: inline;
+}
+.sold_out_label{
+    color: red;
+}

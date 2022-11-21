@@ -1,0 +1,27 @@
+
+<div class="container" id="accounts_order_container">
+    <div class="profile_title mt-4" id="ordersMsg">Here you can watch all your orders details</div>
+    <table class="table mt-2">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Order Id</th>
+            <th scope="col">Products</th>
+            <th scope="col">Total price</th>
+            <th scope="col">Order date</th>
+          </tr>
+        </thead>
+        <tbody id="ordersTableBody">
+        </tbody>
+      </table>
+</div>
+
+<script id="ordersRowTemplate" type="text/html">
+    <tr>
+        <th scope="row">{i}</th>
+        <td>{_id}</td>
+        <td><a class="bold_item" href="http://localhost:8088/orders/getOrderPage/{_id}">Watch products</a></td>
+        <td>{totalPrice} NIS</td>
+        <td>{date}</td>
+    </tr>
+</script>

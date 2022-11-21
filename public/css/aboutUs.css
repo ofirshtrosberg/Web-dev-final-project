@@ -1,0 +1,16 @@
+
+.aboutUsContainer, .aboutUsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    /* Center horizontally*/
+    text-align: center;
+    font-size: 18px;
+  }
+
+h1 {
+    font-size: 60px !important;
+}

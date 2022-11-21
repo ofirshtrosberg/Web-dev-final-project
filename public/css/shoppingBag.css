@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+#shopping_bag_title {
+   font-family: 'Fjalla One', sans-serif;
+}
+
+.product_img {
+   border-radius: 10%;
+}
+
+.pay_button {
+   background-color: #c6a1a9;
+   align-self: center;
+}
+
+.delete_icon_button {
+   background-color: transparent;
+   border: none;
+   width: fit-content;
+   height: fit-content;
+}
+
+#pay_title {
+   font-family: 'Lora', serif;
+   font-size: 30px;
+}
+
+.modal-footer {
+   display: block;
+   margin: auto;
+}
+
+.modal-content-pay {
+   background-image: url("/images/payNewBackground.jpg");
+   background-size: cover;
+}
+
+.sold_out_label {
+   color: red;
+}
+
+.pay-now-label {
+   margin: auto;
+   font-family: 'Fjalla One', sans-serif;
+   color: gray;
+}
+
+#payNow_div {
+   display: flex;
+   flex-direction: column;
+   align-items: end;
+   padding: 0 50px;
+}
+
+#payNow_div b {
+   padding-right: 143px;
+}
+
+.select_payment_card_type {
+   outline: none !important;
+}
+
+.select_payment_contact_details {
+   outline: none !important;
+}
+
+.pay_input {
+   outline: none !important;
+}
+
+.pay_input {
+   outline: none !important;
+}

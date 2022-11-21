@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.profile_container {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.profile_title {
+    font-family: 'Fjalla One', sans-serif;
+}
+
+.field_name {
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+.inner-profile-container{
+    width:600px;
+}}
+    
+@media (min-width: 992px) {
+.inner-profile-container{
+    width:720px;
+}}
+    
+@media (min-width: 1200px) {
+.inner-profile-container{
+    width:900px;
+}}
+
+.profile_nav_link {
+    color: black;
+}
+
+.profile_nav_link:hover, .profile_nav_link:active, .profile_nav_link:focus, .chosen_nav_link {
+    color: #956a73;
+    text-decoration-line: underline;
+    text-decoration-thickness: 3px;
+}
+
+
+hr.solid {
+    margin-top: -10px;
+    border-top: 2px solid black;
+}
+
+hr.dotted {
+    margin-top: -5px;
+    border-top: 2px dotted black; 
+}
+
+.profile_link {
+    color: black;
+}
+
+.profile_link:hover {
+    color: black;
+}
+
+i { cursor: pointer; }

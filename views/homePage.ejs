@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Chic et unique</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="../css/pageFrame.css">
+	<link rel="stylesheet" href="../css/homePage.css">
+</head>
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered" role="document">
+		<div class="modal-content ad">
+			<div class="modal-header border-0" id="ad-header">
+				<div id="modal-close-button">
+					<span aria-hidden="true">&times;</span>
+				</div>
+			</div>
+			<div class="modal-body" id="ad-content">
+					<h1>SALE</h1>
+					<h2>50% OFF</h2>
+					<h3>JUST THIS WEEK</h3>
+					<br>
+			</div>
+			<label class="text-center sale-label">** The shown prices are after discount ** </label>
+		</div>
+	</div>
+</div>
+
+<body>
+
+	<%- include('header.ejs') %>
+		<main>
+			<%- include('../public/html/homePage.html') %>
+		</main>
+	<%- include('footer.ejs') %>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="/js/pageFrame.js"></script>
+<script src="/js/homePage.js"></script>
+
+</html>
+

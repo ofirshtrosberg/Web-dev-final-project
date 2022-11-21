@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+.main_titles {
+    font-family: 'Fjalla One', sans-serif;
+    margin-left: 10%;
+    margin-top: 5%;
+}
+
+#sliding_images_section {
+    margin-top: 2%;
+    width: 80%;
+    margin-left: 10%;
+}
+
+#sliding_images_section img {
+    height: 300px;
+    width: 100%;
+}
+
+#about_paragraph {
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 5%;
+}
+
+.images_and_video_sections {
+    margin-top: 2%;
+}
+
+.images_and_video_sections img {
+    border-radius: 15%;
+}
+
+#video_div {
+    max-width: fit-content;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+#center_img {
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#features_in_our_website_p {
+    margin-top: 1%;
+    margin-left: 10%;
+    margin-right: 5%;
+    margin-bottom: 3%;
+}
+
+/* ad  */
+#modal-close-button {
+    font-size: 40px;
+    cursor: pointer;
+}
+
+.ad {
+    background: url('../images/shoppingBagImage.jpg') center center / cover;
+    background-size: cover;
+    height: 500px;
+}
+
+#ad-content {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Fjalla One', sans-serif;
+    text-shadow: 2px 2px rosybrown;
+    color: white;
+
+}
+
+.ad h1 {
+    font-size: 80px;
+    transition: font-size 2s;
+}
+
+.ad h1:hover {
+    font-size: 100px;
+}
+
+#ad-header {
+    display: flex !important;
+    justify-content: end !important;
+    padding-top: 0px;
+}
+
+@font-face {
+    font-family: adFont;
+    src: url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+}
+
+.sale-label {
+    font-family: adFont;
+}

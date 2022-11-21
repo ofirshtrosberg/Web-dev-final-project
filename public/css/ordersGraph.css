@@ -1,0 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+.titles{
+    font-family: 'Fjalla One', sans-serif;
+    margin-top: 2%;
+}
+svg{
+    background-color: #ffecf0;
+    width: 700px;
+    height: 350px;
+}
+.bar{
+    fill: #c6a1a9;
+}
+.bar:hover{
+    fill: #a67d85;
+}

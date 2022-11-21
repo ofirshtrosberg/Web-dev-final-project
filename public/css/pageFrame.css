@@ -1,0 +1,219 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&family=Great+Vibes&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+body{
+    background-color: #FDFAFC;
+}
+
+
+#header_top_div{
+    background-color: #1E0315 ;
+    color: #eacbd1;
+    text-align: center;
+    font-size: medium;
+}
+#header_navbar{
+    background-color: #eacbd1 !important;
+    border: 3px solid #FDFAFC;;
+    border-radius: 6px;
+}
+#menu_button{
+    height: 40px;
+    width: 40px;
+    border-radius: 7px;
+    font-size:x-large;
+    background-color: #ffecf0;
+    border: 1px solid gray;
+    margin-top: 5px;
+}
+#search_bar{
+    width: 270px;
+    height: 40px;
+    border-radius: 36px;
+    background-color: #ffecf0;
+    border: 1px solid gray;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+#search_input{
+    position: relative;
+    width: 200px;
+    height: 40px;
+    margin-left: 21px;
+    background-color: transparent;
+    outline: none;
+    border: none;
+}
+#search_icon{
+    position: relative;
+    width: 30px;
+    height: 40px;
+    margin-top: 7px;
+}
+#shop_name{
+    font-family: 'Great Vibes', cursive;
+    font-size: xx-large;
+}
+.nav_right_items{
+    background-color: transparent;
+    border: none;
+    margin-right: 15px;
+    font-size: x-large;
+}
+/* #admin_list{
+    margin-right: 59px !important;
+} */
+#adminModeLabel{
+    margin-right: 15px;
+    margin-top: 15px;
+}
+/* menu open */
+#menu_div{
+    display: none;
+    background-color: #ffecf0;
+    width: 100%;
+}
+#menu_cols{
+    margin-left: 15%;
+}
+#menu_ul{
+    list-style: none; /*remove bullets*/
+}
+#menu_ul a{
+    color: gray;
+    text-decoration: none; /*remove underline*/
+}
+.menu_img_div{
+    position: relative;
+    margin-right: 42px;
+    margin-top: 2%;
+}
+.menu_img{
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+
+#footer_top{
+    background-color: rgb(245, 228, 235);
+    height: 30px;
+}
+#shop_name_footer{
+    font-family: 'Great Vibes', cursive;
+    margin-left: 20px;
+    font-size: x-large;
+}
+#footer_bottom{
+    background-color: rgb(245, 228, 235);   
+}
+.footer_ul{
+    list-style-type: none; /*remove the bullets from the list*/
+}
+main{
+    position: relative;
+    min-height: 100vh;
+    padding-bottom: 2.5rem; 
+}
+/* make the footer stick to the bottom */
+footer{
+    /* position:sticky; */
+    width: 100%;
+    bottom: 0;   
+    border: 5px solid #FDFAFC;;
+    border-radius: 6px;
+}
+
+
+.login {
+    background-color: white;
+}
+
+.login_title {
+    font-family: 'Lora', serif;
+    font-size: 30px;
+}
+
+.login_container, .register_container {
+    margin-top: 45px;
+}
+
+.site_input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid grey;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+
+#login_button, #register_button {
+    margin-top: 45px;
+}
+
+#register_button {
+    margin-top: 10px !important;
+}
+
+.login_footer {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+}
+
+#switchToLogin, #switchToReg {
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    /*optional*/
+    font-family: arial, sans-serif;
+    /*input has OS specific font-family*/
+    color: black;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.register_intro {
+    color: gray;
+    font-size: 14px;
+}
+
+.signin_button {
+    font-size: 18px;
+    width: 75px;
+    margin-top: 4px;
+    margin-right: 0px;
+}
+
+.bold_item {
+    color: #956a73;
+    font-weight: bold
+}
+
+.dropdown_name {
+    font-size: 26px;
+    font-family: 'Lora', serif;
+}
+
+#register_errors, #login_errors {
+    height: 5px;
+}
+
+.agreement_check {
+    margin-top: 10px;
+}
+.footer_link{
+    color: gray;
+    text-decoration: none;
+}
+.footer_link:hover{
+    color: black;
+    cursor: pointer;
+}
+
+.site_title {
+    font-family: 'Fjalla One', sans-serif;
+}
+

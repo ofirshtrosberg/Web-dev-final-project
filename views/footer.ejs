@@ -1,0 +1,60 @@
+<footer>
+    <div id="footer_top" class="container-fluid"></div>
+    <div id="footer_bottom" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-2 col-4 offset-lg-3">
+                <ul class="footer_ul">
+                    <li class="mb-1">
+                        <a class="footer_link" href="/">Home Page</a>
+                    </li>
+                    <li class="mb-1">
+                        <a class="footer_link" href="/aboutUs">About us</a>
+                    </li>
+                    <% if(!isAdmin) { %>
+                    <li class="mb-1">
+                        <a  class="footer_link" href="/products">All Products</a>
+                    </li>
+                    <%} else{%>
+                        <li class="mb-1">
+                            <a  class="footer_link" href="/orders/graphs">Orders Graphs</a>
+                        </li>
+                    <%}%>
+                </ul>
+            </div>
+            <div class="col-lg-2 col-4">
+                <ul class="footer_ul">
+                    <% if(!isAdmin) { %>
+                    <li class="mb-1">
+                        <a  class="footer_link" href="/shoppingBag">Shopping Bag</a>
+                    </li>
+                    <li class="mb-1">
+                        <a  class="footer_link" href="/wishList">Wish List</a>
+                    </li>
+                    <%}%>
+                    <li class="mb-1">
+                        <a  class="footer_link" href="/stores">Find A Store</a>
+                    </li>
+                    <li class="mb-1">
+                        <a  class="footer_link" href="https://twitter.com/AmitayCoral">Contact Us On 
+                            <i class="bi bi-twitter"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-4">
+                <ul class="footer_ul footer_link">
+                    <li class="mb-1">
+                        <b>Stores Activity Time:</b>
+                    </li>
+                    <li class="mb-1">
+                        Sunday-Thursday: 8:00-20:00
+                        <br>
+                        Friday: 8:00-14:00
+                        <br>
+                        Saturday: closed
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>

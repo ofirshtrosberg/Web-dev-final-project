@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Chic et unique</title>
+	<link rel="stylesheet" href="/css/products.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="/css/pageFrame.css">
+</head>
+
+
+<body>
+	<%- include('header.ejs') %>
+		<%- include('../public/html/products.html')%>
+			<main>
+				<div class="products-page">
+					<aside class="side-panel">
+						<div class="panel-title">Filter by</div>
+						<ul class="list-group list-group-flush">
+							<li class="list-group-item" id="">
+								<span>
+									All
+								</span>
+							</li>
+							<% for (let i=0; i < AllCategories.length; i++) { %>
+								<li class="list-group-item" id="<%= AllCategories[i]._id%>">
+									<span>
+										<%= AllCategories[i]._id %>
+									</span>
+								</li>
+								<% } %>
+						</ul>
+						<label for="color" class="panel-title color">
+							Color
+						</label>
+						<select id="color" name="color" class="form-select">
+							<option class="selected-option" value="all" disabled selected>Select a color</option>
+							<option class="selected-option" value="all">All colors</option>
+							<option class="selected-option" value="black">Black</option>
+							<option class="selected-option" value="white">White</option>
+							<option class="selected-option" value="gray">Gray</option>
+							<option class="selected-option" value="blue">Blue</option>
+							<option class="selected-option" value="purple">Purple</option>
+							<option class="selected-option" value="red">Red</option>
+							<option class="selected-option" value="green">Green</option>
+							<option class="selected-option" value="yellow">Yellow</option>
+							<option class="selected-option" value="pink">Pink</option>
+							<option class="selected-option" value="brown">Brown</option>
+							<option class="selected-option" value="green">Green</option>
+
+
+						</select>
+						<label for="sorting" class="panel-title sorting">
+							Sorting by
+						</label>
+						<select id="sorting" class="form-select">
+							<option class="selected-option" value="all" disabled selected>Select sorting</option>
+							<option class="selected-option" value="low">Price: lower to higher</option>
+							<option class="selected-option" value="high">Price: higher to lower</option>
+						</select>
+						<label class="panel-title sorting">
+							Currency
+						</label>
+						<select id="currency" class="form-select">
+							<option class="selected-option" value="ILS" selected>ILS</option>
+							<option class="selected-option" value="USD">USD</option>
+							<option class="selected-option" value="EUR">EUR</option>
+						</select>
+
+					</aside>
+					<div class="products">
+						<div class="products-grid">
+							<% for(var i=0; i < products.length; i++ ) { %>
+								<div id="<%= products[i]._id %>">
+									<div class="card">
+										<a href="/products/<%= products[i]._id %>">
+											<img src="<%= products[i].imgUrl %>" class="card-img-top"
+												alt="<% products[i].name %>">
+										</a>
+										<div class="card-body">
+											<% if(user && !isAdmin) {%> 
+											<i id="<%= products[i]._id %>"
+												class="bi bi-suit-heart-fill like-icon add_to_wish_list_icon"></i>
+											<%}%>
+												<h5 class="card-title">
+												<a class="product-name" href="/products/<%= products[i]._id %>">
+													<%= products[i].name %>
+												</a>
+											</h5>
+											<p class="card-text product-price-container">
+												price:
+												<span class="product-price" data-ils="<%= products[i].price %>">
+													<%= products[i].price %> ₪
+												</span>
+											</p>
+											<!-- the produst is available and the user is logged in -->
+											<% if(products[i].isAvailable && user && !isAdmin) { %>
+												<button id="<%=products[i]._id%>"
+													class="btn btn-dark add_to_bag_buttton">Add to bag</button>
+												<% } else if(!user) { %>
+													<span class="btn btn-dark sold-out">login to add to cart</span>
+													<% } else if(!products[i].isAvailable && user && !isAdmin){ %>
+														<span class="btn btn-dark sold-out">SOLD OUT</span>
+														<% } %>
+										</div>
+									</div>
+								</div>
+								<% } %>
+						</div>
+						<button class='navigation-button' id="prev-page" style="display: none;">Previous Page</button>
+						<button class='navigation-button' id="next-page" style="display: none;">Next Page</button>
+					</div>
+				</div>
+			</main>
+			<%- include('footer.ejs') %>
+				<!-- template -->
+				<script id="product-card" type="text/html">
+				<div id="{_id}">
+					<div class="card">
+						<a href="/products/{_id}">
+							<img src="{imgUrl}" class="card-img-top" alt="{name}">
+						</a>
+						<div class="card-body">
+							<% if(locals.user && !isAdmin) {%> 
+							<i id="{_id}" class="bi bi-suit-heart-fill like-icon add_to_wish_list_icon"></i>
+							<%}%>
+							<h5 class="card-title">
+								<a class="product-name" href="/products/{_id}">
+									{name}
+								</a>
+							</h5>
+							<p class="card-text product-price-container">
+								price:
+								<span class="product-price" data-ils="{price}">
+									{price} ₪
+								</span>
+							</p>
+							<% if(locals.user && !isAdmin) {%> 								
+							<span id="{_id}" class="btn btn-dark sold-out {productButton}">{productButtonText}</span>
+							<%} else if(!isAdmin){%>
+								<span class="btn btn-dark sold-out">login to add to cart</span>
+							<%}%>
+						</div>
+					</div>
+				</div>
+			</script>
+
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="/js/pageFrame.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/currencies.js"></script>
+<script src="/js/products.js"></script>
+
+</html>

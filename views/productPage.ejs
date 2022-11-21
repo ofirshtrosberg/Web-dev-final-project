@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Chic et unique</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="../css/pageFrame.css">
+	<link rel="stylesheet" href="../css/product.css">
+</head>
+
+<body>
+	<%- include('header.ejs') %>
+		<main id="<%= product.id %>">
+			<div class="container">
+				<div class="product-page-container mt-4">
+					<div class="product-info row">
+						<div onclick="redirectToProducts()" class="back-button row">
+							&lt Back to all products
+						</div>
+						<div class="product-category site_title row">
+							<%= product.category.toUpperCase() || '' %>
+						</div>
+						<div class="product-name row">
+							<%= product.name %>
+						</div>
+					</div>
+					<div id="details-and-img row mt-4">
+						<div class="product-image-container col col-4 mt-2">
+							<img class="product-image" src="<%= product.imgUrl %>" alt='<%= product.name %>' />
+							<% if(user && !isAdmin) { %>
+								<i id="<%= product._id %>" class="bi bi-suit-heart-fill like-icon add_to_wish_list_icon"></i>
+							<%}%>
+						</div>
+						<hr class="solid">
+						<div class="product-details col col-6 mt-4">
+							<div class="row">
+								<div class="product-price col col-2" data-ils="<%= product.price %>">
+									<%= product.price %>₪
+								</div>
+								<div class="product-description col col-8">
+									<%= product.description || 'There is no description for this product' %>
+								</div>
+								<div class="row">
+									<div class="col col-4 mt-5">
+										<% if(product.isAvailable && user && !isAdmin) { %>
+											<button id="<%= product._id %>" class="add-to-bag-button add_to_bag_buttton">Add to
+												Bag</button>
+											<% } else if(!product.isAvailable && user && !isAdmin){ %>
+												<span class="add-to-bag-button sold-out">SOLD OUT</span>
+												<% } %>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</main>
+		<%- include('footer.ejs') %>
+</body>
+<script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI="
+	crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+	crossorigin="anonymous"></script>
+<script src="/js/pageFrame.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/currencies.js"></script>
+<script src="/js/product.js"></script>
+
+</html>

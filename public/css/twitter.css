@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap');
+
+#twitterCanvas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 120px;  
+}
+
+#post_div{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    background-image: linear-gradient(55deg, #a67d85, #ffecf0)
+}
+
+
+.new-tweet{
+    position: relative;
+    color: #956a73;
+    font-family:cursive;
+    color: white;
+}
+.twitter-icon{
+    font-size:2rem;
+}
+.btn-style{
+    padding: 10px;
+    background-color:#c6a1a9; 
+    border-radius: 10px;
+    margin-top: 20px;
+    margin-left: 20px;
+    position:relative;
+    top:50px;
+}
+#form-twitter{
+    color: #c6a1a9;
+   margin-top: 20px;
+}
+.text-area{
+    color:  #c6a1a9;
+}

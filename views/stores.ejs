@@ -1,0 +1,17 @@
+<div class="container containerStoresList">
+    <div class="stores-list-container col-4">
+        <div class="stores-content">
+            <h1 class="storesListTitle">Stores List</h1>
+            <ul class="ulStores">
+                <% for (let i = 0; i < storesNames.length; i++) {
+                    const storesName = storesNames[i].name; %>
+                    <li>
+                        <i class="bi bi-geo-alt"></i>
+                        <%=storesName%>
+                    </li>
+                <% } %> 
+            </ul>
+        </div>
+    </div>
+    <div id="myMap" class="col-7" style="position:relative;width:600px;height:400px;"></div>
+</div>

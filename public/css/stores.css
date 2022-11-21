@@ -1,0 +1,22 @@
+.containerStoresList{
+    display:flex;
+    margin-top: 5%;
+    position: relative;
+    margin-left: 2%;
+}
+
+.stores-list-container{
+    width:50%
+}
+
+.stores-content{
+    color: #c48996;
+    width: fit-content;
+    margin: auto;
+}
+.ulStores{
+    list-style-type: none;
+}
+.storesListTitle{
+    color: #9e6c77;
+}

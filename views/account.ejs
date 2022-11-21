@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Chic et unique</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="/css/pageFrame.css">
+    <link rel="stylesheet" href="/css/account.css">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script src="https://use.fontawesome.com/3c06b0785b.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/imask/6.4.3/imask.js"></script>
+</head>
+
+
+<body>
+    <%- include('header.ejs') %>
+        <main>
+            <div class="profile_container">
+                <div class="inner-profile-container">
+                    <div class="row">
+                        <div class="col-sm">
+                            <h4 class="profile_title">My account</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <ul class="nav justify-content-center">
+                            <li class="nav-item">
+                                <a class="nav-link profile_nav_link nav_account chosen_nav_link profile_title"
+                                    id="information" aria-current="page" href="#">Information</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link profile_nav_link nav_account profile_title" id="orders"
+                                    href="#">Orders</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link profile_nav_link nav_account profile_title" id="contact_details"
+                                    href="#">Contact details</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link profile_nav_link nav_account profile_title" id="credit_cards"
+                                    href="#">Credit cards</a>
+                            </li>
+                        </ul>
+                        <hr class="solid">
+                    </div>
+                    <div class="container information_container">
+                        <div class="row mt-4">
+                            <div class="col-12">
+                                <h5 class="profile_title">LOGIN INFORMATION</h5>
+                                <hr class="dotted">
+                                <div class="container display_info_login_container">
+                                    <div class="row">
+                                        <i class="icon-edit bold_item" id="edit_login_info"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Username</div>
+                                        <div class="col col-2">
+                                            <%= username %>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Password</div>
+                                        <div class="col col-2">*******</div>
+                                    </div>
+                                </div>
+                                <div class="container edit_info_login_container">
+                                    <div class="row">
+                                        <i class="icon-arrow-left bold_item" id="display_login_info"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">New username</div>
+                                        <div class="col col-2"><input type="text" id="new_username" name="username"
+                                                class="form-control row site_input" placeholder="Username"></div>
+                                        <div class="col col-2"><button id="save_username_button" type="submit"
+                                                class="btn btn-dark btn-md btn-block" disabled="disabled">Save</button>
+                                        </div>
+                                        <div class="col col-6 bold_item">
+                                            <p id="username_msg_placeholder"></p>
+                                        </div>
+                                    </div>
+                                    <div class="row pb-2">
+                                        <div class="col col-2 field_name">New password</div>
+                                        <div class="col col-2"><input type="password" id="new_pass" name="password"
+                                                class="form-control row site_input" placeholder="Password"></div>
+                                        <div class="col col-2"><button id="save_password_button" type="submit"
+                                                class="btn btn-dark btn-md btn-block" disabled="disabled">Save</button>
+                                        </div>
+                                        <div class="col col-6 bold_item">
+                                            <p id="password_msg_placeholder"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <h5 class="profile_title">PROFILE PICTURE</h5>
+                                <hr class="dotted">
+                                <div class="container display_profile_pic_container">
+                                    <div class="row">
+                                        <i class="icon-edit bold_item" id="edit_profile_pic"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Profile photo</div>
+                                        <div class="col col-2">
+                                            <% if(account.profilePictureUrl) { %>
+                                                <meta name="referrer" content="same-origin" />
+                                                <img id="profile_img" class="img-thumbnail img-fluid" src="<%= account.profilePictureUrl %>">
+                                                <% } else { %>
+                                                    <img src="/images/default_profile.png">
+                                                    <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container edit_profile_pic_container">
+                                    <div class="row">
+                                        <i class="icon-arrow-left bold_item" id="display_profile_pic"></i>
+                                    </div>
+                                    <form method="post" action="/accounts/uploadProfile" enctype="multipart/form-data">
+                                        <div class="row mt-2">
+                                            <div class="col col-5">
+                                                <input class="form-control" type="file" name="image" id="file" />
+                                            </div>
+                                            <div class="col col-2 pb-2">
+                                                <button type="submit" name="upload" id="uploadFile"
+                                                    class="btn btn-dark btn-md btn-block">Upload</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <h5 class="profile_title">PROFILE INFORMATION</h5>
+                                <hr class="dotted">
+                                <div class="container display_profile_info_container">
+                                    <div class="row">
+                                        <i class="icon-edit bold_item" id="edit_profile_info"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Email</div>
+                                        <div class="col col2">
+                                            <% if(account.email) { %>
+                                                <%= account.email %>
+                                                    <% } else { %>
+                                                        not given
+                                                        <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">First name</div>
+                                        <div class="col col-2">
+                                            <% if(account.firstName) { %>
+                                                <%= account.firstName %>
+                                                    <% } else { %>
+                                                        not given
+                                                        <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Gender</div>
+                                        <div class="col col-2">
+                                            <% if(account.gender) { %>
+                                                <%= account.gender %>
+                                                    <% } else { %>
+                                                        not given
+                                                        <% } %>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Date of birth</div>
+                                        <div class="col col-2">
+                                            <% if(account.dateOfBirth) { %>
+                                                <%= account.dateOfBirth %>
+                                                    <% } else { %>
+                                                        not given
+                                                        <% } %>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="container edit_profile_info_container">
+                                    <div class="row">
+                                        <i class="icon-arrow-left bold_item" id="display_profile_info"></i>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">Email</div>
+                                        <div class="col col-5">
+                                            <input type="email" id="email_input" name="email"
+                                                aria-describedby="emailHelp" class="form-control row site_input"
+                                                placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 field_name">First name</div>
+                                        <div class="col col-2">
+                                            <input type="text" id="firstname_input" name="firstName"
+                                                class="form-control row site_input" placeholder="First name">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 pb-3 pt-3 field_name">Gender</div>
+                                        <div class="col col-5 pb-3 pt-3">
+                                            <div class="form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                    id="gender_male" value="male" checked>
+                                                <label class="form-check-label" for="gender_male">
+                                                    Male
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                    id="gender_female" value="female">
+                                                <label class="form-check-label" for="gender_female">
+                                                    Female
+                                                </label>
+                                            </div>
+                                            <div class="form-check-inline">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                    id="gender_other" value="other">
+                                                <label class="form-check-label" for="gender_other">
+                                                    Other
+                                                </label>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-2 fielf_name">Date of birth</div>
+                                        <div class="col col-3">
+                                            <input type="date" id="birth_date_input" name="dateOfBirth"
+                                                class="form-control row site_input" placeholder="Date Of Birth">
+                                        </div>
+                                    </div>
+                                    <div class="col col-8 bold_item" id="profile_info_msg_placeholder"></div>
+                                    <div class="col col-2 mt-4 pb-2"><button id="save_profile_info_button" type="submit"
+                                            class="btn btn-dark btn-md btn-block">Save</button></div>
+                                </div>
+                            </div>
+                            <div class="col-12 mt-4">
+                                <h5 class="profile_title">CLOSE ACCOUNT</h5>
+                                <hr class="dotted">
+                                <div class="row">
+                                    <div class="col col-12">I would like to close my account at Chic Et Uniqe</div>
+                                    <div class="col col-4">
+                                        <a id="closeAccount" class="profile_link" type="button">Close my account</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container orders_container">
+                        <%- include('orders.ejs') %>
+                    </div>
+                    <div class="container contact_details_container">
+                        <div class="container" id="allContactDetails">
+                        </div>
+                        <div class="row">
+                            <div class="col col-3 mt-2 mb-2">
+                                <button class="btn btn-dark" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#addContactDetailForm" aria-expanded="false"
+                                    aria-controls="collapseExample">
+                                    Click to add
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row collapse" id="addContactDetailForm">
+                        <div class="col col-8 card card-body">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col col-2 field_name">Description</div>
+                                    <div class="col col-5">
+                                        <input type="text" id="description_input" name="description"
+                                            class="form-control site_input" placeholder="Home, work, parent's house">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 field_name">Phone number</div>
+                                    <div class="col col-2">
+                                        <select id="phone_prefix" class="form-select site_input">
+                                            <option>050</option>
+                                            <option>051</option>
+                                            <option>052</option>
+                                            <option>053</option>
+                                            <option>054</option>
+                                            <option>055</option>
+                                            <option>058</option>
+                                        </select>
+                                    </div>
+                                    <div class="col col-5">
+                                        <input type="text" id="phone_number_input" name="phone_number"
+                                            class="form-control site_input" placeholder="Your phone number">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 field_name">Address</div>
+                                    <div class="col col-5">
+                                        <input type="text" id="street_input" name="street"
+                                            class="form-control site_input" placeholder="Hahavatzelet st">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 field_name">Address 2</div>
+                                    <div class="col col-5">
+                                        <input type="text" id="rest_address_input" name="rest_address"
+                                            class="form-control site_input" placeholder="Apartment, studio or floor">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 field_name">City</div>
+                                    <div class="col col-3">
+                                        <input type="text" id="city_input" name="city" class="form-control site_input"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-2 field_name">Zip</div>
+                                    <div class="col col-3">
+                                        <input type="text" id="zip_input" name="zip" class="form-control site_input"
+                                            placeholder="">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-3 mt-2">
+                                        <button class="btn btn-dark" type="button" id="save_contact">
+                                            Add
+                                        </button>
+                                    </div>
+                                    <div class="col col-6 mt-2 bold_item" id="contact_details_msg_placeholder"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="container credit_cards_container">
+                        <div id="creditCardDetails">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- </div> -->
+        </main>
+        <%- include('footer.ejs') %>
+            <script src="https://code.jquery.com/jquery-3.6.1.js"
+                integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+                crossorigin="anonymous"></script>
+            <script src="/js/pageFrame.js"></script>
+            <script src="/js/account.js"></script>
+            <script src="/js/orders.js"></script>
+</body>
+
+</html>
+
+<script id="messagesTemplate" type="text/html">
+    <div class="row">
+        <div class="col col-4">
+            {msg}
+        </div>
+    </div>
+</script>
+
+<script id="contactDetailsTemplate" type="text/html">
+        <div class="row">
+            <div class="col col-8 mt-1 card card-body">
+                <div class="container display_contact_details_container" id="display_{_id}">
+                    <div class="row">
+                        <div class="col">
+                            <i class="icon-edit bold_item edit_contactDetails_info" id="edit_{_id}"></i> 
+                            <i class="fa fa-trash bold_item" id="delete_{_id}" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 field_name">Description</div>
+                        <div class="col col-5">
+                            {description}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 field_name">Phone number</div>
+                        <div class="col col-5">
+                            {phoneNumber}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 field_name">Address</div>
+                        <div class="col col-5">
+                            {address}
+                        </div>
+                    </div>
+                </div>
+                <div class="container edit_contact_details_container" id="{_id}">
+                    <div class="row">
+                        <div class="col">
+                            <i class="icon-arrow-left bold_item" id="back_{_id}"></i> 
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 field_name">Description</div>
+                        <div class="col col-5">
+                            <input type="text" name="description" 
+                        class="form-control site_input description_edit" value="{description}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col col-3 field_name">Phone number</div>
+                        <div class="col col-2">
+                            <% var prefixes = ["050", "051", "052", "053", "054", "055", "058"]; %>
+                            <select class="form-select site_input phone_prefix_edit" id="phonePrefix_{_id}">
+                                <% for (var j =0; j < prefixes.length;  j++ ) { %>
+                                        <option value="<%=  prefixes[j] %>"> <%=  prefixes[j] %> </option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="col col-5">
+                            <input type="text" name="phone_number" 
+                                class="form-control site_input phone_number_edit" value="{phoneNumberSuffix}">
+                        </div>
+                    </div>
+                        <div class="row">
+                            <div class="col col-3 field_name">Address</div>
+                            <div class="col col-5">
+                                <input type="text" name="street" 
+                                    class="form-control site_input street_edit" value="{street}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-3 field_name">Address 2</div>
+                            <div class="col col-5">
+                                <input type="text" name="rest_address" 
+                                    class="form-control site_input rest_address_edit" value="{restAddress}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-3 field_name">City</div>
+                            <div class="col col-3">
+                                <input type="text" name="city" 
+                                    class="form-control site_input city_edit" value="{city}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-3 field_name">Zip</div>
+                            <div class="col col-3">
+                                <input type="text" name="zip" 
+                                    class="form-control site_input zip_edit" value="{zip}">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col col-3 mt-2">
+                                <button class="btn btn-dark save_edit_contact" type="button">
+                                    Save
+                                </button>
+                            </div>
+                            <div class="col col-6 mt-2 bold_item" id="edit_contact_details_msg_placeholder"></div>
+                        </div>
+                </div>
+            </div>
+        </div>
+</script>
+
+
+<script id="creditCardTemplate" type="text/html">
+    <div class="row">
+        <div class="col col-8 mt-1 card card-body">
+            <div class="container display_credit_card_container" id="display_{_id}">
+                <div class="row">
+                    <div class="col">
+                        <i class="icon-edit bold_item edit_credit_card_info" id="edit_{_id}"></i> 
+                        <i class="fa fa-trash bold_item" id="delete_{_id}" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card type</div>
+                    <div class="col col-5">
+                        {cardType}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card number</div>
+                    <div class="col col-5">
+                        {hiddenCardNumber}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card CVV</div>
+                    <div class="col col-5">
+                        {hiddenCardCvv}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Expiration date</div>
+                    <div class="col col-5">
+                        {cardExpirationDate}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner full name</div>
+                    <div class="col col-5">
+                        {cardOwnerName}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner ID</div>
+                    <div class="col col-5">
+                        {cardOwnerId}
+                    </div>
+                </div>
+            </div>
+            <div class="container edit_credit_card_container" id="{_id}">
+                <div class="row">
+                    <div class="col col-3 field_name">Card type</div>
+                    <div class="col col-3">
+                        <% var types = ["Visa", "Mastercard", "American Express", "Discover", "Diners"]; %>
+                            <select class="form-select site_input" id="edit_card_type">
+                                <% for (var j =0; j < types.length;  j++ ) { %>
+                                        <option value="<%=  types[j] %>"> <%=  types[j] %> </option>
+                                <% } %>
+                            </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card number</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardNumber" 
+                            class="form-control site_input" id="edit_card_number" value="{cardNumber}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card CVV</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardCVV" 
+                            class="form-control site_input" id="edit_card_cvv" value="{cardCVV}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Expiration Date</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardExpirationDate" 
+                            class="form-control site_input" id="edit_expiration_date" value="{cardExpirationDate}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner full name</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardOwnerName" 
+                            class="form-control site_input" id="edit_owner_name" value="{cardOwnerName}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner ID</div>
+                    <div class="col col-3">
+                        <input type="text" name="cardOwnerId" 
+                            class="form-control site_input" id="edit_owner_id" value="{cardOwnerId}">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 mt-2">
+                        <button class="btn btn-dark" id="save_edit_credit_card" type="button">
+                            Save
+                        </button>
+                    </div>
+                    <div class="col col-6 mt-2 bold_item" id="edit_credit_card_msg_placeholder"></div>
+                </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</script>
+
+<script id="addCreditCardTemplate" type="text/html">
+    <div class="container addCreditCardContainer">
+        <div class="row">
+            <div class="col col-5">
+                You don't have saved credit card details.
+            </div>
+        </div>
+        <div class="row">
+            <div class="col col-3 mt-2 mb-2">
+                <button class="btn btn-dark" type="button" data-bs-toggle="collapse" data-bs-target="#addCreditCardForm" aria-expanded="false" aria-controls="collapseExample" id="addCardButton">
+                    Click to add
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="row collapse" id="addCreditCardForm">
+        <div class="col col-8 card card-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-3 field_name">Card type</div>
+                    <div class="col col-3">
+                        <% var types = ["Visa", "Mastercard", "American Express", "Discover", "Diners"]; %>
+                            <select class="form-select site_input" id="add_card_type">
+                                <% for (var j =0; j < types.length;  j++ ) { %>
+                                        <option value="<%=  types[j] %>"> <%=  types[j] %> </option>
+                                <% } %>
+                            </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card number</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardNumber" 
+                            class="form-control site_input" id="add_card_number" >
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Card CVV</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardCVV" 
+                            class="form-control site_input" id="add_card_cvv">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Expiration Date</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardExpirationDate" 
+                            class="form-control site_input" id="add_expiration_date">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner full name</div>
+                    <div class="col col-5">
+                        <input type="text" name="cardOwnerName" 
+                            class="form-control site_input" id="add_owner_name">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 field_name">Owner ID</div>
+                    <div class="col col-3">
+                        <input type="text" name="cardOwnerId" 
+                            class="form-control site_input" id="add_owner_id">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-3 mt-2">
+                        <button class="btn btn-dark" id="save_add_credit_card" type="button">
+                            Save
+                        </button>
+                    </div>
+                    <div class="col col-6 mt-2 bold_item" id="add_credit_card_msg_placeholder"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</script>

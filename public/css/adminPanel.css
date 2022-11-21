@@ -1,0 +1,18 @@
+
+.categoryItem:active, .categoryItem:focus, .categoryItem:hover {
+    background-color: #eacbd1 !important;
+}
+ 
+.productItem:active, .productItem:focus, .productItem:hover {
+    background-color: #eacbd1 !important;
+}
+ 
+
+.productImg {
+    max-height: 150px;
+    max-width: 100px;
+}
+
+i { cursor: pointer; }
+
+  
